@@ -29,7 +29,7 @@ function Bar() {
       <Container  className='d-flex align-items-center '>
         
           <NavLink to="/" className="navbar-brand ">
-            <img src="../public/house-fill.svg" alt=""
+            <img src="/house-fill.svg" alt=""
               width="50"
               height="40" />
           </NavLink>
