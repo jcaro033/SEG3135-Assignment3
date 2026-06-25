@@ -1,7 +1,7 @@
 
-import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router';
 //import './index.css'
-import { Container, Navbar, NavbarBrand } from 'react-bootstrap'
+import { Container, Navbar } from 'react-bootstrap'
 import Home from './home'
 import Game from './game'
 
