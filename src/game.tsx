@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { Button, Card, CardHeader, Col, Container, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router";
 
 
@@ -11,8 +11,8 @@ function Game() {
     const colourGame = (game === "true");
     const [globalShow, setGlobalShow] = useState(true);
     let [lastClicked, setLastClicked] = useState(-1);
-    let [values, setValues] = useState([]);
-    let [colorArray, setColorArray] = useState([]);
+    let [values, setValues] = useState<number[]>([]);
+    let [colorArray, setColorArray] = useState<number[]>([]);
     let [gameActive, setGameActive] = useState(false);
     let [gameWon, setGameWon] = useState(false);
     let [gameEnded, setGameEnded] = useState(false);
@@ -88,7 +88,7 @@ function Game() {
     /**
      * Shufles the array elements of series
      */
-    function shuffleArray(series) {
+    function shuffleArray(series: number[]) {
         let size = series.length;
         //go through list and swap values
         for (let i = size - 1; i != 0; i--) {
@@ -174,7 +174,7 @@ function Game() {
         }
 
         //decrent the array of colours left
-        function decementArray(element) {
+        function decementArray(element: number) {
             let temp = colorArray;
             temp[element]--;
             setColorArray(temp);
@@ -250,7 +250,16 @@ function Game() {
         </Container>
     )
 }
-function MemoryCard({ data, checkResult, colourGame, globalShow, elementSize, gameActive }) {
+type MemoryCardProps = {
+    data: number;
+    checkResult: (clickedElement: number) => void;
+    colourGame: boolean;
+    globalShow: boolean;
+    elementSize: number;
+    gameActive: boolean;
+};
+
+function MemoryCard({ data, checkResult, colourGame, globalShow, elementSize, gameActive }: MemoryCardProps) {
 
     const [showCard, setShowCard] = useState(false);
 

@@ -1,20 +1,20 @@
-import { createContext, useContext, useState } from "react"
+import { useState } from "react"
 import { Button, Container, Form, Row } from "react-bootstrap"
-import { Link, Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
+const difficultys = {
+    Easy: "Easy",
+    Medium: "Medium",
+    Hard: "Hard",
+} as const;
 
+type DifficultyIndex = 0 | 1 | 2;
+const difficultyNames = Object.values(difficultys);
 
 function homeScreen() {
-    const [size, setSize] = useState("5")
     const [Gamemode, setGamemode] = useState(false);
     const [colours, setColours] = useState("4");
-    
-    enum difficultys{
-        Easy = 0,
-        Medium = 1,
-        Hard = 2
-    }
-    const [difficutly, setDifficulty] = useState(1);
+    const [difficutly, setDifficulty] = useState<DifficultyIndex>(1);
 
     const navigate = useNavigate();
     return (
@@ -43,9 +43,9 @@ function homeScreen() {
                         Difficulty
                     </Form.Label>
                     <br />
-                    <Form.Range min={0} max={2} step={1} onChange={(e) => setDifficulty(Number(e.target.value))} className="w-50" />
+                    <Form.Range min={0} max={2} step={1} onChange={(e) => setDifficulty(Number(e.target.value) as DifficultyIndex)} className="w-50" />
                     <Row className="justify-content-center d-flex mb-3 fs-5">
-                        {difficultys[difficutly]}
+                        {difficultyNames[difficutly]}
                     </Row>
                     {Gamemode ?
                         (
@@ -65,7 +65,7 @@ function homeScreen() {
                     }
                     <Container>
                             <Button variant="primary"
-                                onClick={() => navigate(`/game/${Gamemode}/${difficultys[difficutly]}/${colours}`)
+                                onClick={() => navigate(`/game/${Gamemode}/${difficultyNames[difficutly]}/${colours}`)
                                 }
 
                             >Start Game!</Button>
