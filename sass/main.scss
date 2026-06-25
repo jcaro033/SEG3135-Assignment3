@@ -1,0 +1,18 @@
+
+$primary: #FF8811;
+$primary-bg-subtle: #F4D06F;
+$secondary: #AF5B5B;
+$purple: #2e2452;
+$tertiary: #9DD9D2;
+$theme-colors: ( 
+    "tertiary": $tertiary,
+    "purple": $purple,
+"primary": $primary,
+"secondary": $secondary
+
+);
+$font-family-base: 'Sniglet',Static;
+
+
+// default bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap'
